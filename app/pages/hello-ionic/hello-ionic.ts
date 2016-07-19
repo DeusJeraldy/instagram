@@ -41,11 +41,37 @@ export class HelloIonicPage {
   }
 
   deletePhoto(photo){
-    this.photos.splice(this.photos.indexOf(photo), 1);
+    this.photoService.deletePhoto(photo.photoId).subscribe(
+                data => {
+                    console.log(data);
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log('Photo Get Complete')
+            );
+
+    this.photoService.getPhotos().subscribe(
+                data => {
+                    this.photos = data;
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log('Photo Get Complete')
+            );
   }
 
   likePhoto(photo){
-    photo.likes++;
+   /*this.photoService.updatePhoto().subscribe(
+                data => {
+                    this.photos = data;
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log('Photo Get Complete')
+            );
+  */
   }
-  
 }

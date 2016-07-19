@@ -17,5 +17,19 @@ export class PhotoService {
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
+
+  deletePhoto(id: number) {
+    var url = "http://jamzicoreapi.azurewebsites.net/api/photo/" + id;
+
+    var response = this.http.delete(url).map(res => res.json());
+    return response;
+  }
+
+  /*updatePhoto(id: number) {
+    var url = "http://jamzicoreapi.azurewebsites.net/api/photo/" + id;
+
+    var response = this.http.put(url).map(res => res.json());
+    return response;
+  }*/
 }
 
